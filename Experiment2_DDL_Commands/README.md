@@ -105,123 +105,198 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 1
+-- CREATE TABLE Orders(
+OrderID INTEGER PRIMARY KEY,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER ,
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="882" height="357" alt="image" src="https://github.com/user-attachments/assets/08aace39-27e4-4459-aa6c-3608d5ee63f1" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Create a table named Employees with the following constraints:
+
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 
 ```sql
--- Paste your SQL code below for Question 2
+-- CREATE TABLE Employees(
+EmployeeID INTEGER PRIMARY KEY,
+FirstName TEXT NOT NULL,
+LastName TEXT NOT NULL,
+Email TEXT UNIQUE,
+Salary CHECK (Salary > 0),
+DepartmentID INTEGER,
+FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="873" height="502" alt="image" src="https://github.com/user-attachments/assets/116e2d39-4393-4d32-ac1a-5b1aaaee037e" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- Paste your SQL code below for Question 3
+-- INSERT INTO Employee(EmployeeID,Name,Department,Salary)
+SELECT EmployeeID,Name,Department,Salary from Former_employees;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="861" height="372" alt="image" src="https://github.com/user-attachments/assets/f43d3b50-73d7-43cb-a694-d68e5ce96ce6" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Create a new table named contacts with the following specifications:
+contact_id as INTEGER and primary key.
+first_name as TEXT and not NULL.
+last_name as TEXT and not NULL.
+email as TEXT.
+phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
 ```sql
--- Paste your SQL code below for Question 4
+-- CREATE TABLE contacts(
+contact_id INTEGER PRIMARY KEY,
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL,
+email TEXT,
+phone TEXT NOT NULL CHECK (LENGTH(phone) >= 10)
+
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="880" height="416" alt="image" src="https://github.com/user-attachments/assets/2e3326d6-f11d-4bac-82b0-2e3c24a5fd3d" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
+For example:
 
 ```sql
--- Paste your SQL code below for Question 5
+-- CREATE TABLE Attendance(
+AttendanceID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+AttendanceDate DATE,
+Status TEXT CHECK (Status IN ('Present','Absent','Leave')),
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="865" height="361" alt="image" src="https://github.com/user-attachments/assets/dc6e8cf8-4ce5-40e9-82cd-95ed42835f57" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+-- Write an SQL query to add two new columns, first_name and last_name, to the table employee. Both columns should have a data type of varchar(50).
 
 ```sql
--- Paste your SQL code below for Question 6
+-- ALTER TABLE employee ADD first_name varchar(50);
+ALTER TABLE employee ADD last_name varchar(50);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="868" height="390" alt="image" src="https://github.com/user-attachments/assets/d27ba96d-0f79-4df8-986f-ec1243705c09" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Write a SQL query to Add a new ParentsNumber column  as number and Adhar_Number as Number in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 7
+-- ALTER TABLE Student_details ADD ParentsNumber number;
+ALTER TABLE Student_details ADD Adhar_Number number;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="873" height="462" alt="image" src="https://github.com/user-attachments/assets/4fc1cb16-9d49-490f-8fd6-ccb119c40d44" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- Insert all products from Discontinued_products into Products.
+
+Table attributes are ProductID, ProductName, Price, Stock
 
 ```sql
--- Paste your SQL code below for Question 8
+-- INSERT INTO Products(ProductID, ProductName, Price,Stock)
+SELECT ProductID,ProductName,Price,Stock from Discontinued_products
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="877" height="407" alt="image" src="https://github.com/user-attachments/assets/a820c186-0ae2-4d6a-92db-4d4ceaf1b300" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Insert the below data into the Employee table, allowing the Department and Salary columns to take their default values.
+
+EmployeeID  Name         Position
+----------  -----------  ----------
+4           Emily White  Analyst
+
+Note: The Department and Salary columns will use their default values.   
 
 ```sql
--- Paste your SQL code below for Question 9
+-- INSERT INTO Employee(EmployeeId,Name,Position) VALUES (4,'Emily White','Analyst')
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="882" height="432" alt="image" src="https://github.com/user-attachments/assets/fe0730ef-aeea-4c45-ac05-e17810393ecf" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Create a table named Tasks with the following columns:
+
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 10
+-- CREATE TABLE Tasks(
+TaskID INTEGER,
+TaskName TEXT,
+DueDate DATE
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+
+<img width="873" height="455" alt="image" src="https://github.com/user-attachments/assets/834c7a26-85ef-4400-ad48-7d80464e6008" />
 
 
 ## RESULT
